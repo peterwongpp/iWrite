@@ -80,4 +80,24 @@ class BooksController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def publish
+    @book = Book.find(params[:book_id])
+    @book.publish
+    
+    respond_to do |format|
+      format.html { redirect_to(books_url) }
+      format.xml { head :ok }
+    end
+  end
+  
+  def unpublish
+    @book = Book.find(params[:book_id])
+    @book.unpublish
+    
+    respond_to do |format|
+      format.html { redirect_to(books_url) }
+      format.xml { head :ok }
+    end
+  end
 end

@@ -1,10 +1,12 @@
 Iwrite::Application.routes.draw do
-  resources :books
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
   
   root :to => 'books#index'
+  resources :books do
+    put '/publish', :action => 'publish'
+    put '/unpublish', :action => 'unpublish'
+  end
     
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
